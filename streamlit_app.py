@@ -129,6 +129,7 @@ def auto_mail_results(user_name):
     Name: {user_name}                          Date: {st.session_state.user_details['date_of_birth'].strftime('%m/%d/%Y')}
     Organization: {st.session_state.user_details.get('organization', '')}
     Position: {st.session_state.user_details.get('position', '')}
+    Email: {st.session_state.user_details.get('email')}
     Setting for Profile: {st.session_state.user_details['gender']}                Gender: {'☒' if st.session_state.user_details['gender'] == 'Male' else '☐'} Male  {'☐' if st.session_state.user_details['gender'] == 'Female' else '☐'} Female
 
     See Scoring Instructions on Page 3
@@ -183,10 +184,10 @@ def auto_mail_results(user_name):
                 </tr>
                 <tr>
                     <td><strong>Organization:</strong> {st.session_state.user_details.get('organization', '')}</td>
-                    <td><strong>Position:</strong> {st.session_state.user_details.get('position', '')}</td>
+                    <td><strong>Email:</strong> {st.session_state.user_details.get('email', '')}</td>
                 </tr>
                 <tr>
-                    <td><strong>Setting for Profile:</strong> {st.session_state.user_details['gender']}</td>
+                    <td><strong>Position:</strong> {st.session_state.user_details.get('position', '')}</td>
                     <td><strong>Gender:</strong> {'☒' if st.session_state.user_details['gender'] == 'Male' else '☐'} Male  {'☐' if st.session_state.user_details['gender'] == 'Female' else '☐'} Female</td>
                 </tr>
             </table>
