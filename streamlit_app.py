@@ -126,11 +126,10 @@ def auto_mail_results(user_name):
     text = f"""
     IMLDISCheights™ Personality System Graph Page
 
-    Name: {user_name}                          Date: {st.session_state.user_details['date_of_birth'].strftime('%m/%d/%Y')}
-    Organization: {st.session_state.user_details.get('organization', '')}
-    Position: {st.session_state.user_details.get('position', '')}
+    Name: {user_name}
     Email: {st.session_state.user_details.get('email')}
-    Setting for Profile: {st.session_state.user_details['gender']}                Gender: {'☒' if st.session_state.user_details['gender'] == 'Male' else '☐'} Male  {'☐' if st.session_state.user_details['gender'] == 'Female' else '☐'} Female
+    {f"Date: {st.session_state.user_details['date_of_birth'].strftime('%m/%d/%Y')}" if st.session_state.user_details.get('date_of_birth') else ""}
+    {f"Gender: {'☒' if st.session_state.user_details.get('gender') == 'Male' else '☐'} Male  {'☒' if st.session_state.user_details.get('gender') == 'Female' else '☐'} Female" if st.session_state.user_details.get('gender') else ""}
 
     See Scoring Instructions on Page 3
 
@@ -180,15 +179,11 @@ def auto_mail_results(user_name):
             <table>
                 <tr>
                     <td><strong>Name:</strong> {user_name}</td>
-                    <td><strong>Date:</strong> {st.session_state.user_details['date_of_birth'].strftime('%m/%d/%Y')}</td>
+                    {f'<td><strong>Date:</strong> {st.session_state.user_details["date_of_birth"].strftime("%m/%d/%Y")}</td>' if st.session_state.user_details.get('date_of_birth') else ''}
                 </tr>
                 <tr>
-                    <td><strong>Organization:</strong> {st.session_state.user_details.get('organization', '')}</td>
                     <td><strong>Email:</strong> {st.session_state.user_details.get('email', '')}</td>
-                </tr>
-                <tr>
-                    <td><strong>Position:</strong> {st.session_state.user_details.get('position', '')}</td>
-                    <td><strong>Gender:</strong> {'☒' if st.session_state.user_details['gender'] == 'Male' else '☐'} Male  {'☐' if st.session_state.user_details['gender'] == 'Female' else '☐'} Female</td>
+                    {f'<td><strong>Gender:</strong> {"☒" if st.session_state.user_details.get("gender") == "Male" else "☐"} Male  {"☐" if st.session_state.user_details.get("gender") == "Male" else "☒"} Female</td>' if st.session_state.user_details.get('gender') else ''}
                 </tr>
             </table>
         </div>
